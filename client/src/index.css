@@ -1,0 +1,50 @@
+@import 'tailwindcss';
+
+@theme {
+	/* Fonts */
+	--font-sans: 'Inter', system-ui, sans-serif;
+	--font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+	/* Navy */
+	--color-navy-900: #0d1117;
+	--color-navy-800: #161b22;
+	--color-navy-700: #21262d;
+	--color-navy-600: #30363d;
+	--color-navy-500: #484f58;
+
+	/* Risk */
+	--color-risk-low: #1a7f37;
+	--color-risk-low-50: #dafbe1;
+
+	--color-risk-medium: #9a6700;
+	--color-risk-medium-50: #fff8c5;
+
+	--color-risk-high: #cf222e;
+	--color-risk-high-50: #ffebe9;
+}
+
+@layer base {
+	body {
+		@apply bg-navy-900 text-white antialiased;
+	}
+}
+
+@keyframes score-fill {
+	from {
+		stroke-dashoffset: 283;
+	}
+
+	to {
+		stroke-dashoffset: var(--target-offset);
+	}
+}
+
+.score-arc {
+	animation: score-fill 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.score-arc {
+		animation: none;
+	}
+}
